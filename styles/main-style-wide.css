@@ -1,0 +1,69 @@
+#page-title{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 50%;
+	height: 100%;
+}
+
+#title-text{
+	position: absolute;
+	transition: left 1s;
+	left: 5vw; /* 10% of this block, 5% of window width */
+	top: 15%;
+	width: 80%;
+	text-align: center;
+	font-size: 500%;
+	white-space: nowrap;
+	font-weight: lighter;
+}
+
+#page-content{
+	position: absolute;
+	right: 0em;
+	top: 0em;
+	width: 50%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#content-hint-bar{
+	position: absolute;
+	left: 0em;
+	top: min(15% + 1em, 20% - 1.5rem);
+	width: 100%;
+	text-align: center;
+	font-size: 300%;
+	opacity: 0; /* Invisible at first */
+	transition: opacity 0.5s;
+	font-weight: lighter;
+	text-shadow: 0em 0em 0.3em black;
+}
+#content-list{
+	font-size: max(1rem, 150%);
+	max-height: 50%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	overflow-y: -moz-scrollbars-none; /* IE 10+ */
+	-ms-overflow-style: none; /* Old FF */
+	scrollbar-width: none; /* FF 64+ */
+}
+#content-list::-webkit-scrollbar{
+	display: none; /* Chrome, Edge, Safari, Opera */
+	width: 0px !important;
+}
+#content-list > *{
+	opacity: 0.5;
+	transition: opacity 0.5s;
+	cursor: pointer;
+}
+#content-list > *:hover{
+	opacity: 1;
+}
+.extra-hint{
+	display: none;
+}
