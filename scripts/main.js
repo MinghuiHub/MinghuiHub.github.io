@@ -26,7 +26,10 @@ function jumpTo(url){
 
 function initPage(){
 	const $list=$("#content-list");
-	for(const item of mainPageItems){
+	if(!PAGE_ITEMS){
+		throw new Error("PAGE_ITEMS not found. unable to load");
+	}
+	for(const item of PAGE_ITEMS){
 		const $el=$("<div>");
 		$el.html("&bullet;&nbsp;"+item.name);
 

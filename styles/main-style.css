@@ -47,3 +47,16 @@ body{
 	background-color: #fff;
 	opacity: 1;
 }
+
+a:link, a:visited, a:hover, a:active{
+	color: #86c2e0;
+}
+
+.noscrollbar{
+	-ms-overflow-style: none; /* Old FF */
+	scrollbar-width: none; /* FF 64+ */
+}
+.noscrollbar::-webkit-scrollbar{
+	display: none; /* Chrome, Edge, Safari, Opera */
+	width: 0px !important;
+}

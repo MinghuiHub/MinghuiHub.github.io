@@ -1,0 +1,30 @@
+#page-title{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 100%;
+	height: 15em;
+	line-height: 15em; /* also vertical align */
+	background-color: #00000022;
+}
+
+#title-text{
+	width: 100%;
+	text-align: center;
+	font-size: 600%;
+	white-space: nowrap;
+	font-weight: lighter;
+}
+
+#page-content{
+	position: absolute;
+	left: 0em;
+	top: 15em;
+	width: 100%;
+	height: calc(100% - 15em);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
