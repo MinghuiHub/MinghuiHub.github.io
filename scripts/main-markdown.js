@@ -14,26 +14,15 @@ function jumpTo(url){
 
 function initPage(){
 	arriving();
+	marked.use({renderer:{
+		link:(href,title,text)=>{ // add animation
+			return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
+		}
+	}});
 	loadMarkdownFile().then(content=>{
 		parseAndInsertMarkdown(content);
 		hljs.highlightAll();
 	});
-	$(window).on("resize",e=>{
-		const x=window.innerWidth;
-		const y=window.innerHeight;
-		onResize(x,y);
-	});
-	onResize(window.innerWidth,window.innerHeight); // kick at first
-}
-
-let nowStyle="";
-function onResize(x,y){
-	const $style=$("#page-style");
-	const newStyleHREF=x>y?"./styles/main-markdown-style-wide.css":"./styles/main-markdown-style-thin.css";
-	if(newStyleHREF!=nowStyle){ // update
-		$style.attr("href",newStyleHREF);
-		nowStyle=newStyleHREF;
-	}
 }
 
 // ================ markdown loading ================
