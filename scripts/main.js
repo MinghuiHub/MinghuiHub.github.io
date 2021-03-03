@@ -31,7 +31,7 @@ function initPage(){
 	}
 	for(const item of PAGE_ITEMS){
 		const $el=$("<div>");
-		$el.html("&bullet;&nbsp;"+item.name);
+		$el.html(item.name);
 
 		const $elHint=$("<div class='extra-hint'>").text(item.hint);
 		$el.append($elHint);

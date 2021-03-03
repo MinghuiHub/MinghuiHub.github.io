@@ -40,7 +40,7 @@
 }
 
 pre, code{
-	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, monospace, sans-serif;
+	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, monospace, Microsoft YaHei, sans-serif;
 	-ms-overflow-style: none; /* Old FF */
 	scrollbar-width: none; /* FF 64+ */
 }
@@ -78,7 +78,6 @@ pre code.hljs{
 	width: 100%;
 	border-collapse: collapse;
 }
-
 #content-list table tbody{
 	border-top: 2px solid #ffffff44;
 }
@@ -92,7 +91,6 @@ pre code.hljs{
 	border-left: 0.5rem solid #ffffff44;
 	padding: 0.5rem 1rem;
 }
-
 #content-list blockquote p{
 	margin: 0em;
 }
@@ -100,4 +98,7 @@ pre code.hljs{
 #content-list h1{
 	padding-bottom: 0.5rem;
 	border-bottom: 2px solid #ffffff44;
+}
+#content-list h2{
+	color:#5b9bd5;
 }

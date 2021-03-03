@@ -61,7 +61,14 @@
 	transition: opacity 0.5s;
 	cursor: pointer;
 }
-#content-list > *:hover{
+#content-list > *::before{
+	color:#5b9bd5;
+	content: "\2022"; /* a bullet */
+	margin-right: 0.5em;
+	transition: opacity 0.5s;
+	opacity: 0;
+}
+#content-list > *:hover, #content-list > *:hover::before{
 	opacity: 1;
 }
 .extra-hint{

@@ -66,7 +66,7 @@ function initPage(){
 我们希望绘制一个带透明度的笔刷，即新的圆形不会完全遮蔽下面的内容，而是增加一个半透明的颜色。根据[不透明度混合的原理（英）](https://www.w3.org/TR/compositing/#whatiscompositing)，在笔刷的圆的颜色为**Cc**（RGB分量）不透明度为**αc**，底色为**Cb**不透明度为**αb**时，混合后的颜色**Cr**和不透明度**αr**可以用下式表示：
 $$
 \begin{aligned}
-\alpha_r&=\alpha_c+\alpha_b(1-\alpha_c) \\
+\alpha_r&=\alpha_c+\alpha_b(1-\alpha_c) \\\\
 C_r&=\frac{\alpha_c C_c+\alpha_b C_b(1-\alpha_c)}{\alpha_r}
 \end{aligned}
 $$
@@ -114,10 +114,12 @@ $$
 如果对每个像素的不透明度αc乘以r，就可以得到一个模糊的圆了，看上去似乎过渡很平滑。但这里有一个问题：当若干个这样的圆重叠在一起的时候，过渡还会这么平滑吗？
 
 让我们考虑这样的情况：若干个相同颜色的圆依次以不透明度f1, f2, ..., fN覆盖在某个像素上。预设笔触不透明度是α（充分接近0以便利用级数近似）。那么最终这个像素中笔刷颜色的不透明度是：
-$$\begin{align}
-	a&=b+c \\
+$$
+\begin{align}
+	a&=b+c \\\\
 	d&=e+f
-\end{align}$$
+\end{align}
+$$
 为便于计算，考虑当N趋近于无穷大。用f(r)表示距圆周为r时的不透明度，我们有：
 $$
 \begin{aligned}
@@ -130,7 +132,7 @@ $$
 对于并非位于笔触中心的像素，假设其距离笔触中心为t（倍半径），则可以计算相对不透明度变化率αr(t)/α：
 $$
 \begin{align}
-	\frac{\alpha_r(t)}{\alpha} &\approx \int_0^{\sqrt{1-t^2}} f(\sqrt{r^2+t^2}) \mathrm{d}r \\
+	\frac{\alpha_r(t)}{\alpha} &\approx \int_0^{\sqrt{1-t^2}} f(\sqrt{r^2+t^2}) \mathrm{d}r \\\\
 	t &\in [-1,1]
 \end{align}
 $$
@@ -141,7 +143,7 @@ $$
 从上图可以看出，直接选取f(x)=1-x（即r，蓝色线）会在边缘处形成非零的梯度（生硬的渐变）。我们选择最尖锐的f(x)=(1-x)^2函数，因为它有能力变得更平滑。通过引入硬边缘参数**b**（0~1）使得不透明度函数变为：
 $$
 f_1(r)=\begin{cases}
-	f(r/b) & r<b \\
+	f(r/b) & r<b \\\\
 	f(1) & r\ge b
 \end{cases}
 $$

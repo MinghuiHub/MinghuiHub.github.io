@@ -14,11 +14,13 @@ function jumpTo(url){
 
 function initPage(){
 	arriving();
-	marked.use({renderer:{
-		link:(href,title,text)=>{ // add animation
-			return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
+	marked.use({
+		renderer:{
+			link:(href,title,text)=>{ // add animation
+				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
+			}
 		}
-	}});
+	});
 	loadMarkdownFile().then(content=>{
 		parseAndInsertMarkdown(content);
 		hljs.highlightAll();
@@ -75,7 +77,8 @@ function parseAndInsertMarkdown(content){
 function renderLaTeX(){
 	try{
 		MathJax.Hub.Queue(["Typeset",MathJax.Hub,"content-list"]);
-		// Mathjax.typesetPromise($("#content-list")).then(() => {
+		// Do not use MathJax V3: not better than V2 effect now
+		// MathJax.typesetPromise($("#content-list")).then(() => {
 		// 	// the new content is has been typeset
 		// 	console.log("Set");
 		// });

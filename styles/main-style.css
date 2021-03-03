@@ -51,6 +51,10 @@ body{
 
 a:link, a:visited, a:hover, a:active{
 	color: #86c2e0;
+	text-decoration: none;
+}
+hr{
+	border: 1px solid #ffffff44;
 }
 
 .noscrollbar{
