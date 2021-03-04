@@ -22,6 +22,8 @@ markdown.html?title=<你的标题>&src=<encoded markdown 链接>
 
 ![FRAME](//bing.com)
 
+会自动处理相对路径。
+
 ## 二级标题
 
 **粗体文字**和*斜体文字*。
@@ -130,10 +132,22 @@ $$
 | 本列居左 | 本列居中 | 本列靠右 |
 | :--- | :---: | ---: |
 | 1 | * 列表<br />* 换行 |  2 |
-| 嵌入文字的<img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Rainbow1.svg" width="200" />图片 | SVG图片和视频  | <video controls width="200"><source src="../resources/Tower.mp4"></video> |
+| 嵌入文字的<img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Rainbow1.svg" width="200" />图片 | SVG图片和视频  | <video controls width="200"><source src="../resources/tower.mp4"></video> |
 
 分割线：
 
 ---
 
 下一段落
+
+## XSS防御
+
+以下攻击脚本会被本页过滤：
+
+| 类型         | 示例（已被过滤）                                             |
+| ----------: | :----------------------------------------------------------: |
+| 脚本嵌入     | `![img](javascript:alert(1))`<br>![img](javascript:alert(1)) |
+| 转义脚本嵌入 | `[bad-link](&#0000106&#0000097&#0000118&#0000097`<br/>`&#0000115&#0000099&#0000114&#0000105&#0000112`<br/>`&#0000116&#0000058&#0000097&#0000108&#0000101`<br/>`&#0000114&#0000116&#0000040&&#0000048&&#0000041)`<br/>[bad-link](&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&&#0000048&&#0000041) |
+| CSS攻击      | `<div style='background-image:url("javascript:alert(1)")'>para</div>`<br><div style='background-image:url("javascript:alert(1)")'>para</div> |
+
+[一般而言，本页不允许 `style, href="某些脚本", onxxx=某些脚本` 等行为。这些内容在解释.md文件时会被过滤掉。]()
