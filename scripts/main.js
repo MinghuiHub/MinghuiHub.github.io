@@ -13,6 +13,9 @@ function hoverHint($el,hint){
 }
 
 function arriving(){
+	$(window).on("focus",e => {
+		$("#page-mask").fadeOut(500);
+	});
 	return new Promise(res=>{
 		$("#page-mask").fadeOut(500,res);
 	});
