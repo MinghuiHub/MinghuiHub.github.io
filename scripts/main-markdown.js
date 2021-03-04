@@ -17,6 +17,11 @@ function initPage(){
 	marked.use({
 		renderer:{
 			link:(href,title,text)=>{ // add animation
+				if(href.startsWith("*")){ // in title block
+					const url=href.substring(1);
+					appendTitleBlock(url,text);
+					return "";
+				}
 				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
 			},
 			table:(header,body)=>{ // add surroundings fow overflow
@@ -126,4 +131,11 @@ function renderLaTeX(){
 		}
 		// else: other type of error
 	}
+}
+
+function appendTitleBlock(url,text){
+	$el=$("<div class='title-item'>");
+	$el.text(text);
+	$el.click(()=>jumpTo(url));
+	$("#title-container").append($el);
 }

@@ -8,3 +8,14 @@ hr{
 	width: 40%;
 	border-radius: 0.5rem;
 }
+
+#title-block{
+	width: 100%;
+	margin: 0rem;
+	padding: 0rem;
+}
+#title-container{
+	padding: 0.5rem 0rem;
+	border: none;
+	border-radius: 0rem;
+}

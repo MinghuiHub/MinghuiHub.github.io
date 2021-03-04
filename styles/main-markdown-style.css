@@ -188,3 +188,38 @@ img{
 #content-list input[type="checkbox"]:checked::after{
 	content: "\25A3"; /* a filled square */
 }
+
+/* ==================== title block ================= */
+#title-block{
+	width: fit-content;
+	opacity: 0;
+	transition: opacity 0.5s;
+	pointer-events: none;
+	padding: 1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+#page-title:hover #title-block{
+	opacity: 1;
+	pointer-events: all;
+}
+#title-container{
+	background-color: #000000aa;
+	border: 1px solid #ffffff22;
+	border-radius: 1rem;
+	box-shadow: 0px 0px 2em #00000088;
+	padding: 0.5rem 1rem;
+	text-align: center;
+}
+.title-item{
+	font-size: max(200%, 1.5rem);
+	white-space: nowrap;
+	font-weight: lighter;
+	font-family: var(--font-light);
+	opacity: 0.7;
+	transition: opacity 0.5s;
+	line-height: 150%;
+}
+.title-item:hover{
+	opacity: 1;
+}
