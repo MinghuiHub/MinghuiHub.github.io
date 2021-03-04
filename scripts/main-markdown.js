@@ -15,6 +15,7 @@ function jumpTo(url){
 	});
 }
 
+// @TODO: XSS filter after pasing the whole page
 function XSSCheck(url){ // XSS filter
 	const link=`<a href="${url}"></a>`;
 	const filtered=filterXSS(link);
@@ -37,7 +38,9 @@ function initPage(){
 					appendTitleBlock(url,text);
 					return "";
 				}
-				
+
+				return `<a href="${href}">${text}</a>`;
+
 				if(XSSCheck(href)){
 					return "";
 				}
@@ -53,9 +56,6 @@ function initPage(){
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
 			},
 			image:(href,title,text)=>{
-				if(XSSCheck(href)){
-					return "";
-				}
 				if(text=="FRAME"){
 					return `<div class="iframe-container"><iframe src="${href}"></iframe><div class="iframe-resizer"></div></div>`;
 				}
@@ -103,8 +103,16 @@ function initPage(){
 		});
 		$("#content-list").find("a").each(function(){
 			const $this=$(this);
-			if($this.attr("href").match(/^\.*\/[^\/].*$/)){
+			const href=$this.attr("href");
+			if(!href){ // filtered or no content
+				return;
+			}
+			if(href.match(/^\.*\/[^\/].*$/)){
 				modifyRelativeURL($this,"href");
+			}
+			if(!href.startsWith("#")){ // not modified also
+				const newHref=$this.attr("href");
+				$this.attr("href",`javascript:jumpTo(${newHref})`);
 			}
 		});
 	});
@@ -170,8 +178,19 @@ function loadMarkdownFile(){
 function parseAndInsertMarkdown(content){
 	const $el=$("#content-list");
 	const mdHTML=marked(content); // parse markdown source into HTML
-	$el.html(mdHTML);
-
+	const whiteList=filterXSS.whiteList;
+	whiteList["iframe"]=["src"];
+	whiteList["source"]=["src"];
+	whiteList["input"]=["checked","disabled","type"];
+	whiteList["title"]=[];
+	const filtered=filterXSS(mdHTML,{
+		onIgnoreTagAttr: function(tag, name, value, isWhiteAttr) {
+			if (name==="class") {
+				return `class="${value}"`;
+			}
+		}
+	});
+	$el.html(filtered);
 	renderLaTeX();
 }
 
