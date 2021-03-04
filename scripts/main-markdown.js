@@ -37,8 +37,10 @@ function initPage(){
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
 			},
 			image:(href,title,text)=>{
+				console.log(href);
 				if(href.match(/(^\/[^\/])|(^\.).*$/)){ // relative route
 					href=PAGE_ROUTE+href;
+					console.log(href);
 				}
 				if(text=="FRAME"){
 					return `<div class="iframe-container"><iframe src="${href}"></iframe><div class="iframe-resizer"></div></div>`;
