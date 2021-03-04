@@ -189,6 +189,58 @@ img{
 	content: "\25A3"; /* a filled square */
 }
 
+#content-list iframe, #content-list video{
+	border: none;
+	outline: none;
+	width: 100%;
+	box-shadow: 0px 0px 2rem #000000;
+	transition: box-shadow 0.5s;
+	border-radius: 1em;
+}
+#content-list iframe{
+	height: 20rem;
+	resize: vertical;
+	display: block;
+}
+#content-list iframe::after{
+	height: 20rem;
+	resize: vertical;
+}
+#content-list iframe:hover, #content-list video:hover{
+	box-shadow: 0px 0px 2rem #ffffff88;
+}
+
+#content-list figure{
+	margin: 1em;
+	margin-inline: 1em;
+}
+#content-list audio{
+	border: none;
+	outline: none;
+	max-width: 100%;
+}
+.audio-container{
+	text-align: center;
+}
+
+.iframe-container{
+	position: relative;
+}
+.iframe-resizer{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	width: 16px;
+	height: 16px;
+	border-radius: 16px;
+	background: #5b9bd5;
+	pointer-events: none;
+	line-height: 16px;
+	font-size: 16px;
+	text-align: center;
+	border: 3px solid #00000044;
+	box-sizing: border-box;
+}
 /* ==================== title block ================= */
 #title-block{
 	width: fit-content;
@@ -210,6 +262,9 @@ img{
 	box-shadow: 0px 0px 2em #00000088;
 	padding: 0.5rem 1rem;
 	text-align: center;
+}
+#title-container:empty{
+	display: none;
 }
 .title-item{
 	font-size: max(200%, 1.5rem);

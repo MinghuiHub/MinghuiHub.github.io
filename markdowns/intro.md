@@ -6,9 +6,12 @@
 
 [wiki](*https://marked.js.org/using_pro#renderer)
 
+![FRAME](../markdown.html)
+
 ## 笔刷渲染
 
 笔刷渲染由两部分组成：**轨迹生成**和**纹理渲染**。一个笔刷可以看作将一个贴图纹理沿一定的轨迹不断叠加的过程，而轨迹生成负责计算纹理叠加的位置和方向，纹理渲染负责将纹理按生成的轨迹放到画布上。
+
 
 > > vrdvrdvre
 > 确实可以简单看成这样
@@ -56,6 +59,10 @@ function initPage(){
 
 `CANVAS.renderer.strokeBezier`为renderer基类`BasicRenderer`的方法，其中用到了`q-bezier.js`中的`QBezier`类。这个类的对象描述了一条二阶（含一阶、零阶）贝塞尔曲线，有很多关于求值和长度计算的方法。关于贝塞尔曲线的基础参见[这里（英）](https://pomax.github.io/bezierinfo/)。$\alpha_r=\alpha_c+\alpha_b(1-\alpha_c)$
 
+![AUDIO](../resources/d.mp3)
+
+![VIDEO](../resources/tower.mp4)
+
 从光标位置得到`QBezier`轨迹之后，由于笔触的各个位置颜色应当是均匀的，而实际接收到光标位置的间距不均匀，同时贝塞尔曲线的弧长与参数变化量之比也是（极其）不均匀的，我们需要沿轨迹**等距**地布置纹理位置。这使用到了通过曲线长求参数的`QBezier.getTWithLength`方法。这个方法通过二分法（精度$10^{-4}$）求使得曲线长为目标长度的参数$t$的方程来得到新的纹理位置。方程求解的函数为`QBezier.getArcLength`函数，使用具有显式表达式的曲线长定积分来计算弧长（拥有弧长的显式表达式也是二阶贝塞尔曲线的优点）。定积分的求解位于`QBezier._getQuadraticIntegrateVal`函数中。实际应用中计算定积分和方程求解的时间相比渲染时间可以忽略不计。
 
 > 均匀参数（左）和均匀弧长（右）的分布效果
@@ -85,12 +92,14 @@ $$
 
 我们考虑一条笔触正中间的某个像素，假设有**q**个圆重叠在一个像素上。这里的q也叫笔刷的**质量**，因为q越大那么圆之间的排列越紧密，最终笔触的绘制效果也会越流畅（看不到单个圆的边缘）。
 
-| q = 4  |             q = 10             |                q = 50 |
-| :----- | :----------------------------: | --------------------: |
-| afsf   |     * ddfdf<br />* cscscsc     | dfddffdf/brush-q50.pn |
-| edefef | ggwsgesrwhrhrehrehjerjhretjert |            hfdhfdhfdg |
+| q = 4  |             q = 10             |                                                       q = 50 |
+| :----- | :----------------------------: | -----------------------------------------------------------: |
+| afsf   |     * ddfdf<br />* cscscsc     |                                        dfddffdf/brush-q50.pn |
+| edefef | ggwsgesrwhrhrehrehjerjhretjert | <video controls><source src="../resources/Tower.mp4"></video> |
 
-> 不透明度0.2的4, 10, 50个圆沿直线重叠在一个点上的效果
+> <center>不透明度0.2的4, 10, 50个圆沿直线重叠在一个点上的效果</center>
+>
+> <video controls><source src="../resources/Tower.mp4"></video>
 
 - [ ] scscsc
 - [x] defsdv

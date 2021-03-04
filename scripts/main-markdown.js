@@ -26,6 +26,18 @@ function initPage(){
 			},
 			table:(header,body)=>{ // add surroundings fow overflow
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
+			},
+			image:(href,title,text)=>{
+				if(text=="FRAME"){
+					return `<div class="iframe-container"><iframe src="${href}"></iframe><div class="iframe-resizer"></div></div>`;
+				}
+				if(text=="AUDIO"){
+					return `<div class="audio-container"><audio controls src="${href}" crossorigin="use-credentials">Your browser does not support <code>audio</code> element.</audio></div>`;
+				}
+				if(text=="VIDEO"){
+					return `<video controls crossorigin="use-credentials"><source src="${href}">Your browser does not support <code>video</code> element.</video>`;
+				}
+				return `<img src="${href}" alt="${text}">`;
 			}
 		}
 	});
