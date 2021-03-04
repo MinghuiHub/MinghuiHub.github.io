@@ -65,7 +65,8 @@ hr{
 	width: 40%;
 }
 img{
-	max-width: 100%;
+	/* max-width: 100%; */
+	object-fit: contain;
 }
 
 .noscrollbar{

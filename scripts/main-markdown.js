@@ -15,6 +15,12 @@ function jumpTo(url){
 	});
 }
 
+function XSSCheck(url){ // XSS filter
+	const link=`<a href="${url}"></a>`;
+	const filtered=filterXSS(link);
+	return link!==filtered;
+}
+
 function initPage(){
 	arriving();
 	marked.use({
@@ -22,10 +28,17 @@ function initPage(){
 			link:(href,title,text)=>{ // add animation
 				if(href.startsWith("*")){ // in title block
 					let url=href.substring(1);
+					if(XSSCheck(url)){
+						return "";
+					}
 					if(url.match(/^\.*\/[^\/].*$/)){ // relative route
 						url=PAGE_ROUTE+url;
 					}
 					appendTitleBlock(url,text);
+					return "";
+				}
+				
+				if(XSSCheck(href)){
 					return "";
 				}
 				if(href.startsWith("#")){ // this page, no animation
@@ -40,6 +53,9 @@ function initPage(){
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
 			},
 			image:(href,title,text)=>{
+				if(XSSCheck(href)){
+					return "";
+				}
 				if(text=="FRAME"){
 					return `<div class="iframe-container"><iframe src="${href}"></iframe><div class="iframe-resizer"></div></div>`;
 				}
