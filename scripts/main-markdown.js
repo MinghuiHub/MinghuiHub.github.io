@@ -28,6 +28,9 @@ function initPage(){
 					appendTitleBlock(url,text);
 					return "";
 				}
+				if(href.startsWith("#")){ // this page, no animation
+					return `<a href="${href}">${text}</a>`;
+				}
 				if(href.match(/^(\/[^\/])|(\.).*$/)){ // relative route
 					href=PAGE_ROUTE+href;
 				}
@@ -45,6 +48,9 @@ function initPage(){
 				}
 				if(text=="VIDEO"){
 					return `<video controls crossorigin="use-credentials"><source src="${href}">Your browser does not support <code>video</code> element.</video>`;
+				}
+				if(text=="OPAQUE"){
+					return `<img class="opaque-img" src="${href}" alt="${text}">`;
 				}
 				return `<img src="${href}" alt="${text}">`;
 			}
@@ -74,15 +80,15 @@ function initPage(){
 			}
 		}
 		$("#content-list").find("img, audio, iframe, source").each(function(){
-			const src=$(this).attr("src");
-			if(src.match(/^(\/[^\/])|(\.).*$/)){
-				modifyRelativeURL($(this),"src");
+			const $this=$(this);
+			if($this.attr("src").match(/^\.*\/[^\/].*$/)){
+				modifyRelativeURL($this,"src");
 			}
 		});
 		$("#content-list").find("a").each(function(){
-			const src=$(this).attr("href");
-			if(src.match(/^(\/[^\/])|(\.).*$/)){
-				modifyRelativeURL($(this),"href");
+			const $this=$(this);
+			if($this.attr("href").match(/^(\/[^\/])|(\.).*$/)){
+				modifyRelativeURL($this,"href");
 			}
 		});
 	});
