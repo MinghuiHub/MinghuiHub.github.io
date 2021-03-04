@@ -42,8 +42,12 @@
 	position: relative;
 }
 
+del{
+	color: #aaa;
+}
+
 pre, code{
-	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, monospace, Microsoft YaHei, sans-serif;
+	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, Microsoft YaHei, monospace, sans-serif;
 	-ms-overflow-style: none; /* Old FF */
 	scrollbar-width: none; /* FF 64+ */
 }
@@ -163,6 +167,7 @@ img{
 }
 .opaque-img{
 	box-shadow: 0px 0px 2rem #000000;
+	border-radius: 1em;
 }
 
 ::selection {
@@ -222,6 +227,7 @@ img{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border-radius: 1em;
 }
 #content-list figure{
 	margin: 1em;
