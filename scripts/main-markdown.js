@@ -28,7 +28,7 @@ function initPage(){
 					appendTitleBlock(url,text);
 					return "";
 				}
-				if(href.match(/(^\/[^\/])|(^\.).*$/)){ // relative route
+				if(href.match(/^(\/[^\/])|(\.).*$/)){ // relative route
 					href=PAGE_ROUTE+href;
 				}
 				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
@@ -37,11 +37,6 @@ function initPage(){
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
 			},
 			image:(href,title,text)=>{
-				console.log(href);
-				if(href.match(/(^\/[^\/])|(^\.).*$/)){ // relative route
-					href=PAGE_ROUTE+href;
-					console.log(href);
-				}
 				if(text=="FRAME"){
 					return `<div class="iframe-container"><iframe src="${href}"></iframe><div class="iframe-resizer"></div></div>`;
 				}
@@ -71,6 +66,25 @@ function initPage(){
 					this.src.endsWith(".gif");
 			})
 			.addClass("opaque-img");
+
+		function modifyRelativeURL($el,attribute){
+			const a=$el.attr(attribute);
+			if(a){
+				$el.attr(attribute,PAGE_ROUTE+a);
+			}
+		}
+		$("#content-list").find("img, audio, iframe, source").each(function(){
+			const src=$(this).attr("src");
+			if(src.match(/^(\/[^\/])|(\.).*$/)){
+				modifyRelativeURL($(this),"src");
+			}
+		});
+		$("#content-list").find("a").each(function(){
+			const src=$(this).attr("href");
+			if(src.match(/^(\/[^\/])|(\.).*$/)){
+				modifyRelativeURL($(this),"href");
+			}
+		});
 	});
 	$("#title-text").text(PAGE_TITLE);
 
