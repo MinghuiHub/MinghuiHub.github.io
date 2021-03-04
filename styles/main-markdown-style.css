@@ -12,6 +12,7 @@
 	background-color: #000000aa;
 	box-shadow: 0px 0px 3em #000000aa;
 	backdrop-filter: blur(1rem);
+	-webkit-backdrop-filter: blur(1rem);
 	z-index: 1;
 }
 #title-text{
@@ -60,6 +61,7 @@ code{
 pre code.hljs{
 	background-color: #00000088;
 	backdrop-filter: blur(1rem);
+	-webkit-backdrop-filter: blur(1rem);
 	border-radius: 1rem;
 }
 
@@ -81,6 +83,7 @@ pre code.hljs{
 	width: 100%;
 	border-radius: 1rem;
 	backdrop-filter: blur(1rem);
+	-webkit-backdrop-filter: blur(1rem);
 	overflow: hidden;
 	overflow-x: scroll;
 	-ms-overflow-style: none; /* Old FF */
@@ -133,6 +136,7 @@ pre code.hljs{
 	padding: 0.5rem 0.5rem 0.5rem 1rem;
 	border-radius: 1rem;
 	backdrop-filter: blur(1rem);
+	-webkit-backdrop-filter: blur(1rem);
 }
 #content-list blockquote blockquote{
 	width: fit-content;
@@ -172,6 +176,7 @@ img{
 }
 #content-list input[type="checkbox"]{
 	appearance: none;
+	-webkit-appearance: none;
 	font-size: 1.2rem;
 	vertical-align: middle;
 	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, monospace, Microsoft YaHei, sans-serif;
