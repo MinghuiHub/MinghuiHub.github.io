@@ -22,7 +22,7 @@ function initPage(){
 			link:(href,title,text)=>{ // add animation
 				if(href.startsWith("*")){ // in title block
 					let url=href.substring(1);
-					if(url.match(/^(\/[^\/])|(\.).*$/)){ // relative route
+					if(url.match(/^\.*\/[^\/].*$/)){ // relative route
 						url=PAGE_ROUTE+url;
 					}
 					appendTitleBlock(url,text);
@@ -31,7 +31,7 @@ function initPage(){
 				if(href.startsWith("#")){ // this page, no animation
 					return `<a href="${href}">${text}</a>`;
 				}
-				if(href.match(/^(\/[^\/])|(\.).*$/)){ // relative route
+				if(href.match(/^\.*\/[^\/].*$/)){ // relative route
 					href=PAGE_ROUTE+href;
 				}
 				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
@@ -87,7 +87,7 @@ function initPage(){
 		});
 		$("#content-list").find("a").each(function(){
 			const $this=$(this);
-			if($this.attr("href").match(/^(\/[^\/])|(\.).*$/)){
+			if($this.attr("href").match(/^\.*\/[^\/].*$/)){
 				modifyRelativeURL($this,"href");
 			}
 		});
