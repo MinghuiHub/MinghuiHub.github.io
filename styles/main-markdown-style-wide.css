@@ -9,11 +9,11 @@
 	width: 100%;
 	height: var(--top-menu-height);
 	line-height: var(--top-menu-height); /* also vertical align */
-	background-color: #000000bb;
-	box-shadow: 0px 0px 3em #000000bb;
+	background-color: #000000aa;
+	box-shadow: 0px 0px 3em #000000aa;
+	backdrop-filter: blur(1rem);
 	z-index: 1;
 }
-
 #title-text{
 	width: 100%;
 	text-align: center;
@@ -77,18 +77,52 @@ pre code.hljs{
 #content-list table{
 	width: 100%;
 	border-collapse: collapse;
+	border-radius: 1rem;
+	overflow: hidden;
+	backdrop-filter: blur(1rem);
+}
+#content-list table thead{
+	background-color: #00000088;
 }
 #content-list table tbody{
+	background-color: #00000044;
+}
+#content-list table tbody tr{
 	border-top: 2px solid #ffffff44;
+}
+#content-list table thead th, #content-list table tbody td{
+	padding: 0.5rem;
+	position: relative;
+}
+#content-list table thead th::after{
+	content: "";
+	position: absolute;
+	background-color: #5b9bd5;
+	left: 0;
+	top: -10000px;
+	height: 20000px;
+	width: 100%;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+#content-list table thead th:hover::after{
+	opacity: 0.3;
 }
 
 #content-list blockquote{
 	background-color: #00000044;
 	display: block;
+	margin-block-start: 0.5rem;
 	margin-block-end: 0em;
 	margin-inline-start: 0em;
 	margin-inline-end: 0em;
-	border-left: 0.5rem solid #ffffff44;
+	padding: 0.5rem 0.5rem 0.5rem 1rem;
+	border-radius: 1rem;
+	backdrop-filter: blur(1rem);
+}
+#content-list blockquote blockquote{
+	width: fit-content;
 	padding: 0.5rem 1rem;
 }
 #content-list blockquote p{
@@ -99,6 +133,17 @@ pre code.hljs{
 	padding-bottom: 0.5rem;
 	border-bottom: 2px solid #ffffff44;
 }
-#content-list h2{
+#content-list h2, #content-list h3{
 	color:#5b9bd5;
+}
+
+img{
+	vertical-align: middle;
+}
+.opaque-img{
+	box-shadow: 0px 0px 2rem #000000;
+}
+
+::selection {
+	background-color: #5b9bd555;
 }

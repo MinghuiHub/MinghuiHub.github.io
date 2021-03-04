@@ -13,7 +13,7 @@
 		const PAGE_ITEMS=[{
 			name: "Introduction",
 			hint: "Self introduction & CV",
-			url: "./intro.html"
+			url: "./markdown.html?title="+encodeURIComponent("Introduction")+"&src="+encodeURIComponent("./markdowns/intro.md")
 		},{
 			name: "Research",
 			hint: "See what I did.",
@@ -32,10 +32,7 @@
 </head>
 <body>
 	<div id="page-title">
-		<div id="title-text">
-			<span class="titlebr">{</span>Minghui Chen<span class="titlebr">}</span>
-		</div>
-
+		<div id="title-text">Minghui Chen</div>
 	</div>
 	<div id="page-content">
 		<div id="content-hint-bar">

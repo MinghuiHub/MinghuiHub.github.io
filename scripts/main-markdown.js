@@ -24,7 +24,21 @@ function initPage(){
 	loadMarkdownFile().then(content=>{
 		parseAndInsertMarkdown(content);
 		hljs.highlightAll();
+		$("#content-list img:only-child") // center-align single images
+			.parent()
+			.filter(function(){return !$(this).text().length})
+			.css("text-align","center");
+		$("#content-list img")
+			.filter(function(){
+				return this.src.endsWith(".jpg")||
+					this.src.endsWith(".jpeg")||
+					this.src.endsWith(".jfif")||
+					this.src.endsWith(".bmp")||
+					this.src.endsWith(".gif");
+			})
+			.addClass("opaque-img");
 	});
+	$("#title-text").text(PAGE_TITLE);
 }
 
 // ================ markdown loading ================

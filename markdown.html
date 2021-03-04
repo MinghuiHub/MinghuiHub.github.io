@@ -60,7 +60,14 @@
 	<link id="page-style" rel="stylesheet" type="text/css" href="./styles/main-markdown-style-wide.css" />
 	<script type="text/javascript">
 		// Configuration goes here
-		const PAGE_CONTENT="./intro.md";
+		const query=window.location.search;
+		const qParams={};
+		for(const p of query.substring(1).split("&")){
+			const kv=p.split("=");
+			qParams[kv[0]]=kv[1];
+		}
+		const PAGE_CONTENT=decodeURIComponent(qParams.src);
+		const PAGE_TITLE=decodeURIComponent(qParams.title);
 	</script>
 	<script src="./scripts/main-markdown.js"></script>
 
@@ -68,7 +75,6 @@
 <body>
 	<div id="page-title">
 		<div id="title-text">
-			<span class="titlebr">{</span>Introduction<span class="titlebr">}</span>
 		</div>
 	</div>
 	<div id="page-content" class="noscrollbar">

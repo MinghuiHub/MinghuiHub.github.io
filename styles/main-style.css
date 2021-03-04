@@ -11,12 +11,6 @@ body{
 	font-family: Lucida Grande, Segoe UI, Consolas, Menlo, Monaco, Microsoft YaHei, sans-serif;
 	cursor: default;
 
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	-khtml-user-select: none;
-	user-select: none;
-
 	overflow: hidden;
 	padding: 0px;
 	margin: 0px;
@@ -34,7 +28,13 @@ body{
 
 	color: #fff;
 }
-.titlebr{
+#title-text::before{
+	content: "{";
+}
+#title-text::after{
+	content: "}";
+}
+#title-text::before, #title-text::after{
 	color:#5b9bd5;
 	position:relative;
 	top:-0.09em;
@@ -54,7 +54,13 @@ a:link, a:visited, a:hover, a:active{
 	text-decoration: none;
 }
 hr{
-	border: 1px solid #ffffff44;
+	border: none;
+	height: 2px;
+	background: #ffffff44;
+	width: 40%;
+}
+img{
+	max-width: 100%;
 }
 
 .noscrollbar{
