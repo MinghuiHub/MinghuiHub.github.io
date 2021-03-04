@@ -6,6 +6,8 @@
 
 [wiki](*https://marked.js.org/using_pro#renderer)
 
+<iframe src="../markdown.html"></iframe>
+
 ![FRAME](../markdown.html)
 
 ## 笔刷渲染

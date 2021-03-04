@@ -140,6 +140,7 @@ pre code.hljs{
 }
 #content-list blockquote blockquote{
 	width: fit-content;
+	width: -moz-fit-content;
 	padding: 0.5rem 1rem;
 }
 #content-list blockquote p{
@@ -193,20 +194,21 @@ img{
 	border: none;
 	outline: none;
 	width: 100%;
+}
+#content-list iframe{
+	height: 100%;
+	display: block;
+}
+:not(.iframe-container) > iframe{
+	height: 20em;
+	resize: vertical;
+}
+#content-list video, :not(.iframe-container) > iframe{
 	box-shadow: 0px 0px 2rem #000000;
 	transition: box-shadow 0.5s;
 	border-radius: 1em;
 }
-#content-list iframe{
-	height: 20rem;
-	resize: vertical;
-	display: block;
-}
-#content-list iframe::after{
-	height: 20rem;
-	resize: vertical;
-}
-#content-list iframe:hover, #content-list video:hover{
+#content-list video:hover, :not(.iframe-container) > iframe:hover{
 	box-shadow: 0px 0px 2rem #ffffff88;
 }
 
@@ -218,6 +220,7 @@ img{
 	border: none;
 	outline: none;
 	max-width: 100%;
+	border-radius: 1em; /* for FF */
 }
 .audio-container{
 	text-align: center;
@@ -225,6 +228,15 @@ img{
 
 .iframe-container{
 	position: relative;
+	height: 20em;
+	resize: vertical;
+	overflow: auto;
+	box-shadow: 0px 0px 2rem #000000;
+	transition: box-shadow 0.5s;
+	border-radius: 1em;
+}
+.iframe-container:hover{
+	box-shadow: 0px 0px 2rem #ffffff88;
 }
 .iframe-resizer{
 	position: absolute;
@@ -232,18 +244,19 @@ img{
 	bottom: 0px;
 	width: 16px;
 	height: 16px;
-	border-radius: 16px;
 	background: #5b9bd5;
 	pointer-events: none;
-	line-height: 16px;
-	font-size: 16px;
-	text-align: center;
-	border: 3px solid #00000044;
-	box-sizing: border-box;
+	border-top-left-radius: 16px;
+	opacity: 0;
+	transition: opacity 1s;
+}
+.iframe-container:hover .iframe-resizer{
+	opacity: 0.8;
 }
 /* ==================== title block ================= */
 #title-block{
 	width: fit-content;
+	width: -moz-fit-content;
 	opacity: 0;
 	transition: opacity 0.5s;
 	pointer-events: none;
@@ -256,7 +269,7 @@ img{
 	pointer-events: all;
 }
 #title-container{
-	background-color: #000000aa;
+	background-color: #000000cc;
 	border: 1px solid #ffffff22;
 	border-radius: 1rem;
 	box-shadow: 0px 0px 2em #00000088;
