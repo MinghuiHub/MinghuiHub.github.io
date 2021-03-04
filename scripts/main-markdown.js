@@ -184,9 +184,10 @@ function parseAndInsertMarkdown(content){
 	whiteList["input"]=["checked","disabled","type"];
 	whiteList["title"]=[];
 	const filtered=filterXSS(mdHTML,{
-		onIgnoreTagAttr: function(tag, name, value, isWhiteAttr) {
-			if (name==="class") {
-				return `class="${value}"`;
+		onIgnoreTagAttr: (tag,name,value)=>{
+			switch(name){
+				case "class": return `class="${value}"`;
+				case "align": return `align="${value}"`;
 			}
 		}
 	});

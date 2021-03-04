@@ -2,6 +2,8 @@
 
 本章Skeeetch的渲染算法。关于笔刷管理器，详见[笔刷管理]。
 
+<center>abc</center>
+
 [Homepage](*https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter)
 
 [wiki](*https://marked.js.org/using_pro#renderer)
@@ -9,6 +11,10 @@
 [img](&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000048&#0000041)
 
 ![FRAME](../markdown.html)
+
+![AUDIO](javascript:void(0))
+
+<div align="right" style="color:#ff0">Yes<br>y</div>
 
 ## 笔刷渲染
 
