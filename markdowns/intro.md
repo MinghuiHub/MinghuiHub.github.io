@@ -90,10 +90,11 @@ function initPage(){
 
 > 如果视频太大可以指定手动视频宽度、高度
 > 仅适用于宽屏，不适用于手机
+> 注意链接文件名大小写！
 > 
 > ---
 >
-> <video controls width="200"><source src="../resources/Tower.mp4"></video>
+> <video controls width="200"><source src="../resources/tower.mp4"></video>
 
 靠左
 
