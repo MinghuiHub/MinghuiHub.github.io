@@ -1,0 +1,10 @@
+.oneline-img-container img{
+	width: 100%;
+}
+
+hr{
+	height: 0.5rem;
+	background: #ffffff44;
+	width: 40%;
+	border-radius: 0.5rem;
+}

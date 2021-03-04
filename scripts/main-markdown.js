@@ -18,6 +18,9 @@ function initPage(){
 		renderer:{
 			link:(href,title,text)=>{ // add animation
 				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
+			},
+			table:(header,body)=>{ // add surroundings fow overflow
+				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
 			}
 		}
 	});
@@ -27,7 +30,7 @@ function initPage(){
 		$("#content-list img:only-child") // center-align single images
 			.parent()
 			.filter(function(){return !$(this).text().length})
-			.css("text-align","center");
+			.addClass("oneline-img-container");
 		$("#content-list img")
 			.filter(function(){
 				return this.src.endsWith(".jpg")||
@@ -39,6 +42,23 @@ function initPage(){
 			.addClass("opaque-img");
 	});
 	$("#title-text").text(PAGE_TITLE);
+
+	$(window).on("resize",e=>{
+		const x=window.innerWidth;
+		const y=window.innerHeight;
+		onResize(x,y);
+	});
+	onResize(window.innerWidth,window.innerHeight); // kick at first
+}
+
+let nowStyle="";
+function onResize(x,y){
+	const $style=$("#page-style");
+	const newStyleHREF=x>y?"./styles/main-markdown-style-wide.css":"./styles/main-markdown-style-thin.css";
+	if(newStyleHREF!=nowStyle){ // update
+		$style.attr("href",newStyleHREF);
+		nowStyle=newStyleHREF;
+	}
 }
 
 // ================ markdown loading ================

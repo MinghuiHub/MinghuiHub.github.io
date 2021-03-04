@@ -4,11 +4,16 @@ html{
 	overflow: hidden; /* No scroll */
 }
 
+:root{
+	--font-normal: Segoe UI, Avenir, Lucida Grande, Consolas, Menlo, Monaco, Microsoft YaHei, sans-serif;
+	--font-light: Segoe UI Semilight, Segoe UI Light, Segoe UI, Avenir Next, Avenir, Lucida Grande, Consolas, Menlo, Monaco, Microsoft YaHei UI Light, Microsoft YaHei, sans-serif;
+}
+
 body{
 	position: relative;
 	width: 100%;
 	height: 100%;
-	font-family: Lucida Grande, Segoe UI, Consolas, Menlo, Monaco, Microsoft YaHei, sans-serif;
+	font-family: var(--font-normal);
 	cursor: default;
 
 	overflow: hidden;

@@ -24,6 +24,7 @@ body{
 	font-size: 500%;
 	white-space: nowrap;
 	font-weight: lighter;
+	font-family: var(--font-light);
 }
 
 #page-content{
