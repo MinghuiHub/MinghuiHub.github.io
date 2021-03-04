@@ -192,6 +192,8 @@ function parseAndInsertMarkdown(content){
 			switch(name){
 				case "class": return `class="${value}"`;
 				case "align": return `align="${value}"`;
+				case "id": return `id="${value}"`;
+				case "name": return `name="${value}"`;
 			}
 		}
 	});
