@@ -40,17 +40,6 @@ function initPage(){
 				}
 
 				return `<a href="${href}">${text}</a>`;
-
-				if(XSSCheck(href)){
-					return "";
-				}
-				if(href.startsWith("#")){ // this page, no animation
-					return `<a href="${href}">${text}</a>`;
-				}
-				if(href.match(/^\.*\/[^\/].*$/)){ // relative route
-					href=PAGE_ROUTE+href;
-				}
-				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
 			},
 			table:(header,body)=>{ // add surroundings fow overflow
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
@@ -73,6 +62,7 @@ function initPage(){
 		}
 	});
 	loadMarkdownFile().then(content=>{
+		console.log("Success");
 		parseAndInsertMarkdown(content);
 		hljs.highlightAll();
 		$("#content-list img:only-child") // center-align single images
@@ -115,8 +105,17 @@ function initPage(){
 				$this.attr("href",`javascript:jumpTo(${newHref})`);
 			}
 		});
+	}).catch(err=>{
+		$("#content-list").addClass("error-block");
+		$("#page-content").addClass("error-container");
+		if(err.status){
+			$("#content-list").text(err.status);
+		}
+		else{
+			$("#content-list").text("Error");
+		}
 	});
-	$("#title-text").text(PAGE_TITLE);
+	$("#title-text").text(PAGE_TITLE||"Null");
 
 	$(window).on("resize",e=>{
 		const x=window.innerWidth;
@@ -162,7 +161,12 @@ function loadMarkdownFile(){
 		req.open("GET",PAGE_CONTENT);
 		req.responseType="text"; // require text
 		req.onload=()=>{ // 100% is also captured by onprogress
-			res(req.response);
+			if(req.status>=400){
+				rej(req);
+			}
+			else{
+				res(req.response);
+			}
 		};
 		req.onprogress=event=>{ // download process can be monitored
 			restartAbortTimer(); // restart download monitoring

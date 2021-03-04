@@ -180,7 +180,6 @@ img{
 	-webkit-appearance: none;
 	font-size: 1.2rem;
 	vertical-align: middle;
-	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, monospace, Microsoft YaHei, sans-serif;
 }
 #content-list input[type="checkbox"]::after{
 	color:#5b9bd5;
@@ -295,4 +294,18 @@ img{
 }
 .title-item:hover{
 	opacity: 1;
+}
+
+#content-list.error-block{
+	font-size: min(20vw, 50vh);
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: Consolas, Menlo, Monaco, 'Courier New', Courier, monospace, Microsoft YaHei, sans-serif;
+}
+.error-container{
+	backdrop-filter: blur(1rem);
+	-webkit-backdrop-filter: blur(1rem);
 }

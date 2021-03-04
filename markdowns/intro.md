@@ -12,6 +12,8 @@
 
 ![FRAME](../markdown.html)
 
+![FRAME](//bing.com)
+
 ![AUDIO](javascript:void(0))
 
 <div align="right" style="color:#ff0">Yes<br>y</div>
