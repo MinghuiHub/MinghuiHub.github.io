@@ -21,9 +21,15 @@ function initPage(){
 		renderer:{
 			link:(href,title,text)=>{ // add animation
 				if(href.startsWith("*")){ // in title block
-					const url=href.substring(1);
+					let url=href.substring(1);
+					if(url.match(/^(\/[^\/])|(\.).*$/)){ // relative route
+						url=PAGE_ROUTE+url;
+					}
 					appendTitleBlock(url,text);
 					return "";
+				}
+				if(href.match(/(^\/[^\/])|(^\.).*$/)){ // relative route
+					href=PAGE_ROUTE+href;
 				}
 				return `<a href="javascript:jumpTo('${href}')">${text}</a>`;
 			},
@@ -31,6 +37,9 @@ function initPage(){
 				return `<div class="table-container"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
 			},
 			image:(href,title,text)=>{
+				if(href.match(/(^\/[^\/])|(^\.).*$/)){ // relative route
+					href=PAGE_ROUTE+href;
+				}
 				if(text=="FRAME"){
 					return `<div class="iframe-container"><iframe src="${href}"></iframe><div class="iframe-resizer"></div></div>`;
 				}

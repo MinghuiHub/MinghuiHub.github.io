@@ -70,6 +70,7 @@
 			qParams[kv[0]]=kv[1];
 		}
 		const PAGE_CONTENT=decodeURIComponent(qParams.src);
+		const PAGE_ROUTE=PAGE_CONTENT.substring(0,PAGE_CONTENT.lastIndexOf("/")+1);
 		const PAGE_TITLE=qParams.title;
 	</script>
 	<script src="./scripts/main-markdown.js"></script>
