@@ -102,7 +102,7 @@ function initPage(){
 			}
 			if(!href.startsWith("#")){ // not modified also
 				const newHref=$this.attr("href");
-				$this.attr("href",`javascript:jumpTo(${newHref})`);
+				$this.attr("href",`javascript:jumpTo("${newHref}")`);
 			}
 		});
 	}).catch(err=>{

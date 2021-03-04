@@ -2,25 +2,21 @@
 
 本章Skeeetch的渲染算法。关于笔刷管理器，详见[笔刷管理]。
 
-<center>abc</center>
-
 [Homepage](*https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter)
 
 [wiki](*https://marked.js.org/using_pro#renderer)
 
-[img](&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000048&#0000041)
+[img](/../../index.html)
 
 ![FRAME](../markdown.html)
 
 ![FRAME](//bing.com)
 
-![AUDIO](javascript:void(0))
-
-<div align="right" style="color:#ff0">Yes<br>y</div>
-
 ## 笔刷渲染
 
 笔刷渲染由两部分组成：**轨迹生成**和**纹理渲染**。一个笔刷可以看作将一个贴图纹理沿一定的轨迹不断叠加的过程，而轨迹生成负责计算纹理叠加的位置和方向，纹理渲染负责将纹理按生成的轨迹放到画布上。
+
+[yaya](#铅笔)
 
 
 > > vrdvrdvre

@@ -19,3 +19,7 @@ hr{
 	border: none;
 	border-radius: 0rem;
 }
+
+#content-list video{
+	width: 100%;
+}
