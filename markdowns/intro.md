@@ -2,6 +2,8 @@
 
 段落文字
 
+## 右上角是目录列表！
+
 菜单链接：鼠标移至标题上访问（正文不会显示）
 
 [菜单链接1](*https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter)
@@ -25,6 +27,8 @@ markdown.html?title=<你的标题>&src=<encoded markdown 链接>
 会自动处理相对路径。
 
 ## 二级标题
+
+### 三级标题
 
 **粗体文字**和*斜体文字*。
 
@@ -58,7 +62,7 @@ markdown.html?title=<你的标题>&src=<encoded markdown 链接>
 > > 2. 有序列表
 > > 3. 还是有序列表
 
-### 三级标题
+### 各种代码
 
 支持代码`Code.render`的书写。块级代码如下：
 
@@ -102,19 +106,27 @@ function initPage(){
 
 <div align="right">靠右的一段<br>文字</div>
 
-图片：（JPEG或OPAQUE名的图片表示居中强调）
+图片：（JPEG或有OPAQUE名的图片表示不透明图像。其余图像显示为透明图像）
 
-![JPEG](https://upload.wikimedia.org/wikipedia/en/7/7b/Aspheric_navitar_elgeet.jpg)
+![](https://upload.wikimedia.org/wikipedia/en/7/7b/Aspheric_navitar_elgeet.jpg)
 
-![OPAQUE](https://upload.wikimedia.org/wikipedia/commons/8/8d/Euler_factorial_paper.png)
+![OPAQUE](https://upload.wikimedia.org/wikipedia/commons/3/3b/CIE1931xy_blank.svg)
+
+![](https://upload.wikimedia.org/wikipedia/commons/3/3b/CIE1931xy_blank.svg)
+
+也可以通过手动给img添加`class='opaque'`来得到inline的不透明图像<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/CIE1931xy_blank.svg" width="100" class="opaque">。如果不添加class，则<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/CIE1931xy_blank.svg" width="100">就是透明图像。
+
+
 
 想手动指定长宽需要完整`<img>`标签：
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Logistic_Map_Animation.gif" width="400" />
 
-### 第二个三级标题
+### 第三个三级标题
 
-#### 四级标题
+### 超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题超长标题
+
+#### 四级标题（目录中不会显示！）
 
 块级公式换行请打4个反斜杠！（markdown转义）
 
@@ -143,10 +155,13 @@ $$
 
 ## XSS防御
 
+### 典型的注入型攻击
+
 以下攻击脚本会被本页过滤：
 
 | 类型         | 示例（已被过滤）                                             |
 | ----------: | :----------------------------------------------------------: |
+| 脚本嵌入 | `<script>alert(1)</script>`<br/><script>alert(1)</script> |
 | 脚本嵌入     | `![img](javascript:alert(1))`<br>![img](javascript:alert(1)) |
 | 转义脚本嵌入 | `[bad-link](&#0000106&#0000097&#0000118&#0000097`<br/>`&#0000115&#0000099&#0000114&#0000105&#0000112`<br/>`&#0000116&#0000058&#0000097&#0000108&#0000101`<br/>`&#0000114&#0000116&#0000040&&#0000048&&#0000041)`<br/>[bad-link](&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&&#0000048&&#0000041) |
 | CSS攻击      | `<div style='background-image:url("javascript:alert(1)")'>para</div>`<br><div style='background-image:url("javascript:alert(1)")'>para</div> |

@@ -23,12 +23,11 @@ body{
 	font-size: 1vw;
 	transition: font-size 1s;
 
-	background-image: url("../resources/main-bg.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #888;
+	background-color: #000;
 	background-blend-mode: multiply; /* brightness adjustment */
 
 	color: #fff;

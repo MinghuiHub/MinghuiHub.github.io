@@ -1,6 +1,10 @@
 $(initPage); // Main program entrance
 
 function arriving(){
+	loadBackground($("body"),PAGE_BG||"./resources/main-bg.jpg").catch(()=>{
+		// default image
+		loadBackground($("body"),"./resources/main-bg.jpg");
+	});
 	$(window).on("focus",e => {
 		$("#page-mask").fadeOut(500);
 	});
@@ -55,14 +59,13 @@ function initPage(){
 					return `<video controls crossorigin="use-credentials"><source src="${href}">Your browser does not support <code>video</code> element.</video>`;
 				}
 				if(text=="OPAQUE"){
-					return `<img class="opaque-img" src="${href}" alt="${text}">`;
+					return `<img class="opaque" src="${href}" alt="${text}">`;
 				}
 				return `<img src="${href}" alt="${text}">`;
 			}
 		}
 	});
 	loadMarkdownFile().then(content=>{
-		console.log("Success");
 		parseAndInsertMarkdown(content);
 		hljs.highlightAll();
 		$("#content-list img:only-child") // center-align single images
@@ -77,7 +80,7 @@ function initPage(){
 					this.src.endsWith(".bmp")||
 					this.src.endsWith(".gif");
 			})
-			.addClass("opaque-img");
+			.addClass("opaque");
 
 		function modifyRelativeURL($el,attribute){
 			const a=$el.attr(attribute);
@@ -182,6 +185,7 @@ function loadMarkdownFile(){
 function parseAndInsertMarkdown(content){
 	const $el=$("#content-list");
 	const mdHTML=marked(content); // parse markdown source into HTML
+	const docIndex=[];
 	const whiteList=filterXSS.whiteList;
 	whiteList["iframe"]=["src"];
 	whiteList["source"]=["src"];
@@ -195,29 +199,59 @@ function parseAndInsertMarkdown(content){
 				case "id": return `id="${value}"`;
 				case "name": return `name="${value}"`;
 			}
+		},
+		onTagAttr: (tag,name,value)=>{ // get headings
+			if(tag.match(/^h[1-6]$/)&&name=="id"){
+				docIndex.push({
+					level: Number.parseInt(tag.charAt(1)),
+					id: value
+				});
+			}
 		}
 	});
 	$el.html(filtered);
 	renderLaTeX();
+	try{
+		// docIndex is the current index of all headings
+		createIndex(docIndex);
+	}
+	catch(err){
+		console.warn(err);
+	}
 }
 
 function renderLaTeX(){
 	try{
 		MathJax.Hub.Queue(["Typeset",MathJax.Hub,"content-list"]);
 		// Do not use MathJax V3: not better than V2 effect now
-		// MathJax.typesetPromise($("#content-list")).then(() => {
-		// 	// the new content is has been typeset
-		// 	console.log("Set");
-		// });
+		// MathJax.typesetPromise($("#content-list"));
 	}
 	catch(err){
 		if(err instanceof ReferenceError){ // not loaded, try again later
 			setTimeout(renderLaTeX,1000);
 		}
-		else{
+		else{ // other types of error
 			throw err;
 		}
-		// else: other type of error
+	}
+}
+
+function createIndex(docIndex){
+	const $container=$("#index-list");
+	let isIndex=false;
+	for(const item of docIndex){
+		if(item.level>3)continue;
+		const content=$(`#${item.id}`).text();
+		const $ui=$(`
+			<h${item.level}>
+				<a href="#${item.id}">${content}</a>
+			</h${item.level}>
+		`);
+		$container.append($ui);
+		isIndex=true;
+	}
+	if(isIndex){
+		$("#index-block").css("display","block");
 	}
 }
 
