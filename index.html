@@ -4,7 +4,9 @@
 <html>
 <head>
 	<script type="text/javascript">
-		window.location.replace("//iraka-c.github.io/?src=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-config.json&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg");
+		const configUrl=encodeURIComponent("//minghuihub.github.io/resources/main-config.json");
+		const bgUrl=encodeURIComponent("//minghuihub.github.io/resources/main-bg.jpg");
+		window.location.replace(`//iraka-c.github.io/?src=${configUrl}&bg=${bgUrl}`);
 	</script>
 </head>
 <body>
