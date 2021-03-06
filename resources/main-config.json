@@ -1,0 +1,19 @@
+[{
+	"title": "Minghui Chen"
+},{
+	"name": "Introduction",
+	"hint": "Self introduction & CV",
+	"url": "./markdown.html?title=Introduction&src=minghuihub.github.io%2Fmarkdowns%2Fintro.md"
+},{
+	"name": "Research",
+	"hint": "See what I did.",
+	"url": "./markdown.html?title=Skeeetch&src=iraka-c.github.io%2FSkeeetch%2Fgl%2Fdocs%2Fzh%2Fmanual%2Flayers.md"
+},{
+	"name": "Miscellaneous",
+	"hint": "Beyond academics?",
+	"url": "//iraka-c.github.io"
+},{
+	"name": "Contact",
+	"hint": "How to hear from me",
+	"url": "./contact.html"
+}]
