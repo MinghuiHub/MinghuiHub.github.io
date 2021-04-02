@@ -3,11 +3,11 @@
 },{
 	"name": "Introduction",
 	"hint": "Personal Information",
-	"url": "./markdown.html?title=Introduction&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fintro.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fintro-bg.jpg"
+	"url": "./markdown.html?title=Introduction&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fintro.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg"
 },{
 	"name": "Research",
 	"hint": "See what I did.",
-	"url": "./markdown.html?title=Introduction&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fresearch.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg"
+	"url": "./markdown.html?title=Research&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fresearch.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg"
 },{
 	"name": "Miscellaneous",
 	"hint": "Beyond academics?",
@@ -15,5 +15,5 @@
 },{
 	"name": "Contact",
 	"hint": "How to find me?",
-	"url": "./markdown.html?title=Introduction&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fcontact.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg"
+	"url": "./markdown.html?title=Contact&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fcontact.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg"
 }]
