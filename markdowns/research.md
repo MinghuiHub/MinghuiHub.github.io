@@ -2,7 +2,7 @@
 
 [Homepage](*minghuihub.github.io)
 
-[Contact](*)
+[Contact](*./markdown.html?title=Introduction&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fcontact.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg)
 
 |                                                       | Intro.                                                       |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
