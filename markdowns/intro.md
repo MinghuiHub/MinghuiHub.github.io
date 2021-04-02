@@ -32,6 +32,6 @@ In detail, I focus on combining HCI studies with technologies from other fields 
 * Electronics Engineering (EE)
 * Mixed Reality (MR, including Virtual Reality (VR) and Augmented Reality (AR)).
 
-If you have similar interest to me, feel free to [contact](?title=Contact&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fcontact.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg) me!
+If you have similar interest to me, feel free to [contact](./markdown.html?title=Contact&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fcontact.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg) me!
 
-> [My publications](?title=Research&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fresearch.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg)
+> [My publications](./markdown.html?title=Research&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fresearch.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg)
