@@ -1,6 +1,6 @@
 # Contact Me
 
-[Homepage](*minghuihub.github.io)
+[Homepage](*//minghuihub.github.io)
 
 E-Mail: <img src="../resources/contact/mail.svg" height=24/>
 
