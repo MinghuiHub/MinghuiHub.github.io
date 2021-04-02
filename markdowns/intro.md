@@ -16,7 +16,7 @@
 
 ### Academic Background
 
-I am a 2<sup>nd</sup> year doctoral student in [Interactive Intelligent Systems Lab (IIS-Lab)](https://iis-lab.org/) under the supervision of Associate Professor [Koji Yatani](https://iis-lab.org/member/koji-yatani/).
+I am a 1<sup>st</sup> year doctoral student in [Interactive Intelligent Systems Lab (IIS-Lab)](https://iis-lab.org/) under the supervision of Associate Professor [Koji Yatani](https://iis-lab.org/member/koji-yatani/).
 
 **Master:** at the same lab (IIS-Lab) in 2020.
 
