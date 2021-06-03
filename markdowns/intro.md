@@ -34,7 +34,7 @@ In detail, I focus on combining HCI studies with technologies from other fields 
 
 If you have similar interest to me, feel free to [contact](//iraka-c.github.io/markdown.html?title=Contact&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fcontact.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg) me!
 
-> [My publications](//iraka-c.github.io/markdown.html?title=Research&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fresearch.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg)
+> [> My publications <](//iraka-c.github.io/markdown.html?title=Research&src=%2F%2Fminghuihub.github.io%2Fmarkdowns%2Fresearch.md&bg=%2F%2Fminghuihub.github.io%2Fresources%2Fmain-bg.jpg)
 
-> [My graphics]()
+> [> My graphics <](//github.com/MinghuiHub/MinghuiHub.github.io/blob/main/resources/design-works.zip)
 
